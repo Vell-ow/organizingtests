@@ -39,21 +39,29 @@ describe('My Login application', () => {
     })
 })
 
-// 1st test: navigate to checkboxes page and confirm that checkbox 1 is unchecked
-// 2nd test: unclick checkbox 2 and confirm it is unchecked
 describe('Checkbox Interaction', () => {
-    it('should verify the state of the first checkbox, uncheck the second checkbox and confirm its state', async () => {
+    // 1st test: navigate to checkboxes page and confirm that checkbox 1 is unchecked
+    it('should navigate to the page and verify checkbox 1 is unchecked', async () => {
 
-        // Navigate to the checkboxes page
+        // Arrange: Navigate to the checkboxes page
         await CheckboxesPage.open()
 
-        // Verify checkbox 1 is not checked initially
+        // Assert: Verify checkbox 1 is not checked initially
         await expect(CheckboxesPage.chkBox1).not.toBeSelected()
+    })
 
-        // Click checkbox 2 to uncheck it
+    // 2nd test: unclick checkbox 2 and confirm it is unchecked
+    it('should uncheck checkbox 2 and confirm its state', async () => {
+
+        // Arrange: Ensure we start with a known state. 
+        // Note: Checkbox 2 is usually checked by default for this test.
+        // We call open() again to refresh the page and ensure the default state.
+        await CheckboxesPage.open()
+
+        // Act: Click checkbox 2 to uncheck it
         await CheckboxesPage.chkBox2.click()
 
-        // Verify checkbox 2 is unchecked
+        // Assert: Verify checkbox 2 is now unchecked
         await expect(CheckboxesPage.chkBox2).not.toBeSelected()
     })
 })
