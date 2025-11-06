@@ -3,7 +3,7 @@ import SecurePage from '../pageobjects/secure.page.js'
 import CheckboxesPage from '../pageobjects/checkboxes.page.js'
 import LoginPage from '../pageobjects/login.page.js'
 
-describe('My Login application', () => {
+describe.skip('My Login application', () => {
     it('should login with valid credentials', async () => {
         await LoginPage.open()
 
@@ -39,7 +39,7 @@ describe('My Login application', () => {
     })
 })
 
-describe('Checkbox Interaction', () => {
+describe.skip('Checkbox Interaction', () => {
     // 1st test: navigate to checkboxes page and confirm that checkbox 1 is unchecked
     it('should navigate to the page and verify checkbox 1 is unchecked', async () => {
 

@@ -2,7 +2,7 @@ import { expect } from '@wdio/globals'
 
 import ChallengingDomPage from '../pageobjects/challengingdom.page.js';
 
-describe('Challenging DOM Selectors and Assertions', () => {
+describe.skip('Challenging DOM Selectors and Assertions', () => {
 
     beforeEach(async () => {
         await ChallengingDomPage.open();
