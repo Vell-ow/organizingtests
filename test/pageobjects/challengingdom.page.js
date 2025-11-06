@@ -1,46 +1,75 @@
-import { $ } from '@wdio/globals'
-import Page from './page.js';
+import { $ } from "@wdio/globals";
 
-class ChallengingDomPage extends Page {
+import Page from "./page.js";
 
-    // 1. Link Text Selector
-    get full() {
-        return $('=Elemental Selenium');
-    }
 
-    // 2. Partial Link Text Selector
-    get partial() {
-        return $('*=Elemental');
-    }
+/**
 
-    // 3. XPath Selector (Based on the assignment's explicit requirement: text "Apeirian0")
-    get apeirian0TableCell() {
-        // This selector is required to meet the assignment's explicit text check.
-        return $('//*[@id="content"]/div/div/div/div[2]/table/tbody/tr[1]/td[2]');
-    }
+* sub page containing specific selectors and methods for a specific page
 
-    /**
-     * Uses the WDIO expect().toHaveText() API directly.
-     * This fulfills the existence and text assertions required by the assignment 
-     * while using the specific WDIO feature.
-     */
-    async existsWText() {
-        const cellElement = this.apeirian0TableCell; 
-        
-        // 1. Assertion that states that the element exists (WDIO automatically includes 
-        // a check for element existence before attempting to get its text).
-        
-        // 2. Assertion that it has the exact text "Apeirian0" using the toHaveText API.
-        // This single line fulfills the twin requirement (exists AND has text).
-        await expect(cellElement).toHaveText('Apeirian0');
-    }
+*/
 
-    /**
-     * Opens the page
-     */
-    open() {
-        return super.open('challenging_dom');
-    }
+class ChallengeDomPage extends Page {
+
+/**
+
+* define selectors using getter methods
+
+*/
+
+
+//get selector for link at bottom of page using WDIO Link
+
+// https://webdriver.io/docs/selectors/#xpath:~:text=View%20on%20GitHub-,Link,-Text%E2%80%8B
+
+get linkText() {
+
+return $("=Elemental Selenium");
+
 }
 
-export default new ChallengingDomPage();
+//get selector link for using WDIO Partial link
+
+// https://webdriver.io/docs/selectors/#xpath:~:text=View%20on%20GitHub-,Partial,-Link%20Text%E2%80%8B
+
+get partLink() {
+
+return $("*=Selenium");
+
+}
+
+
+//get selector for <Apperian0>
+
+//using xpath
+
+get appeOCell() {
+
+return $('//*[@id="content"]/div/div/div/div[2]/table/tbody/tr[1]/td[2]');
+
+}
+
+
+/**
+
+* overwrite specific options to adapt it to page object
+
+in this case we pass checkboxes in order to navigate to the
+
+https://the-internet.herokuapp.com/checkboxes page
+
+*/
+
+// this function comes from page.js and it takes a variable. The variable is the part that comes after the "/"" in page.js you want to navigate to.
+
+open() {
+
+return super.open("challenging_dom");
+
+}
+
+}
+
+// this should match exactly whatever you named your class at top of this page. If you don't do this it can't be used in other parts of your project
+
+export default new ChallengeDomPage();

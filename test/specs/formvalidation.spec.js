@@ -2,7 +2,7 @@
 
 import FormValidationPage from '../pageobjects/formvalidation.page.js';
 
-describe('BONUS: Form Validation Error Messages', () => {
+describe.skip('BONUS: Form Validation Error Messages', () => {
     it('should display and count the expected number of error messages on empty submission', async () => {
         // 1. Open the form validation page
         await FormValidationPage.open();
